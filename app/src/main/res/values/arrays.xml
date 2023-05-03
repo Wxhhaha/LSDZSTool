@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="option_items">
+        <item>蓝牙开机</item>
+        <item>蓝牙关机</item>
+        <item>GPS位置</item>
+        <item>控制器固件升级</item>
+        <item>IOT固件升级</item>
+        <item>蓝牙设置参数</item>
+    </string-array>
+
+    <string-array name="setting_list">
+        <item>系统参数</item>
+        <item>通用参数</item>
+        <item>电池参数</item>
+        <item>电机参数</item>
+        <item>转把参数</item>
+        <item>助力传感器参数</item>
+        <item>测速参数</item>
+        <item>仪表参数</item>
+    </string-array>
+
+    <string-array name="system">
+        <item>UUID0</item>
+        <item>UUID1</item>
+        <item>UUID2</item>
+        <item>UUID3</item>
+        <item>UUID4</item>
+        <item>UUID5</item>
+        <item>Controller customer number</item>
+        <item>Controller part number</item>
+        <item>Controller firmware version (Year~Month)</item>
+        <item>Controller firmware version (Date~No.)</item>
+        <item>Production Date(Year~Month)</item>
+        <item>Production Date(Date~Hour)</item>
+        <item>ODO_H</item>
+        <item>ODO_L</item>
+    </string-array>
+    <string-array name="custom">
+        <item>Acceleration</item>
+        <item>Max. motor phase current</item>
+        <item>Walk assistance percentage</item>
+        <item>Auto-sleep wait time</item>
+        <item>Walk assistance validation</item>
+        <item>Number of pas steps</item>
+        <item>Speed steps enable</item>
+        <item>Step 0 speed limit</item>
+        <item>Step 1 speed limit</item>
+        <item>Step 2 speed limit</item>
+        <item>Step 3 speed limit</item>
+        <item>Step 4 speed limit</item>
+        <item>Step 5 speed limit</item>
+        <item>Step 6 speed limit</item>
+        <item>Step 7 speed limit</item>
+        <item>Step 8 speed limit</item>
+        <item>Step 9 speed limit</item>
+        <item>Power steps enable</item>
+        <item>Step 0 speed limit</item>
+        <item>Step 1 speed limit</item>
+        <item>Step 2 speed limit</item>
+        <item>Step 3 speed limit</item>
+        <item>Step 4 speed limit</item>
+        <item>Step 5 speed limit</item>
+        <item>Step 6 speed limit</item>
+        <item>Step 7 speed limit</item>
+        <item>Step 8 speed limit</item>
+        <item>Step 9 speed limit</item>
+        <item>Controller temperature protection power reduce point</item>
+        <item>Controller temperature protection power cutoff point</item>
+        <item>Motor has temperature sensor</item>
+        <item>Motor temperature protection power reduce point</item>
+        <item>Motor temperature protection power cutoff point</item>
+        <item>Rear light linkage</item>
+        <item>Rear light work style</item>
+        <item>Rear light on level</item>
+    </string-array>
+    <string-array name="battery">
+        <item>Current limit</item>
+        <item>Battery low protection voltage</item>
+        <item>Battery high protection voltage</item>
+        <item>Low voltage power reduce threshold</item>
+        <item>Power remain percentage 0.1V above cutoff point</item>
+    </string-array>
+    <string-array name="motor">
+        <item>Rotor position sensor type</item>
+        <item>With one-way clutch</item>
+        <item>Motor rated voltage</item>
+        <item>Motor rated power</item>
+        <item>Rotor no-load rpm under rated voltage</item>
+        <item>No. of pole pairs</item>
+        <item>Gear reduction ratio</item>
+        <item>Stator resistance</item>
+        <item>Stator inductance</item>
+        <item>Back EMF constant Ke</item>
+        <item>Rotor position sensor detection</item>
+        <item>K1</item>
+        <item>K2</item>
+        <item>PLL_KP_GAIN</item>
+        <item>PLL_KI_GAIN</item>
+        <item>F1</item>
+        <item>F2</item>
+        <item>Rotor_Speed_Min</item>
+        <item>Direction of rotation</item>
+    </string-array>
+    <string-array name="throttle">
+        <item>Throttle valid</item>
+        <item>Throttle max. Output percentage</item>
+        <item>Throttle start-up voltage</item>
+        <item>Throttle full voltage</item>
+        <item>Throttle over voltage</item>
+        <item>Throttle limited by PAS steps</item>
+        <item>Throttle working mode</item>
+        <item>Throttle assistance validation</item>
+    </string-array>
+    <string-array name="sensor">
+        <item>Pedal sensor type</item>
+        <item>Speed signal type</item>
+        <item>Speed signal pedalling backward</item>
+        <item>Number of pulses per circle</item>
+        <item>Starting waiting pulse numbers</item>
+        <item>Stop delay time</item>
+        <item>Pas speed ratio</item>
+        <item>Start-up mode</item>
+        <item>Zero torque auto-detect</item>
+        <item>Zero torque fixed value</item>
+        <item>50Nm torque value increment</item>
+        <item>Torque start-up value increment</item>
+        <item>Pas torque amplification ratio</item>
+        <item>Torque increase reaction time</item>
+        <item>Torque decrease reaction time</item>
+        <item>Speed signal maintenance power</item>
+    </string-array>
+    <string-array name="speed">
+        <item>Speed limit function</item>
+        <item>Number of  magnets of speed sensor</item>
+        <item>Wheel perimeter</item>
+        <item>Speed limit value</item>
+        <item>Speed sensor numbers</item>
+    </string-array>
+    <string-array name="display">
+        <item>Communication protocol</item>
+        <item>Display high priority</item>
+    </string-array>
+    <!--默认值最小值-->
+    <integer-array name="custom_min">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>10</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>80</item>
+        <item>80</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="custom_max">
+        <item>20</item>
+        <item>100</item>
+        <item>100</item>
+        <item>60000</item>
+        <item>2</item>
+        <item>9</item>
+        <item>1</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>1</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>120</item>
+        <item>120</item>
+        <item>1</item>
+        <item>50000</item>
+        <item>50000</item>
+        <item>1</item>
+        <item>2</item>
+        <item>1</item>
+    </integer-array>
+    <integer-array name="battery_min">
+        <item>10</item>
+        <item>150</item>
+        <item>300</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="battery_max">
+        <item>300</item>
+        <item>630</item>
+        <item>1000</item>
+        <item>60</item>
+        <item>100</item>
+    </integer-array>
+    <integer-array name="motor_min">
+        <item>0</item>
+        <item>0</item>
+        <item>12</item>
+        <item>50</item>
+        <item>1</item>
+        <item>2</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="motor_max">
+        <item>1</item>
+        <item>1</item>
+        <item>60</item>
+        <item>800</item>
+        <item>10000</item>
+        <item>100</item>
+        <item>500</item>
+        <item>2000</item>
+        <item>2000</item>
+        <item>10000</item>
+        <item>2</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>65535</item>
+        <item>1</item>
+    </integer-array>
+    <integer-array name="throttle_min">
+        <item>0</item>
+        <item>0</item>
+        <item>2</item>
+        <item>20</item>
+        <item>30</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="throttle_max">
+        <item>1</item>
+        <item>100</item>
+        <item>20</item>
+        <item>50</item>
+        <item>50</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+    </integer-array>
+    <integer-array name="sensor_min">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>10</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>0</item>
+        <item>1</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="sensor_max">
+        <item>2</item>
+        <item>2</item>
+        <item>1</item>
+        <item>100</item>
+        <item>100</item>
+        <item>2000</item>
+        <item>100</item>
+        <item>1</item>
+        <item>1</item>
+        <item>500</item>
+        <item>500</item>
+        <item>100</item>
+        <item>100</item>
+        <item>2000</item>
+        <item>4000</item>
+        <item>100</item>
+    </integer-array>
+    <integer-array name="speed_min">
+        <item>0</item>
+        <item>0</item>
+        <item>100</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+    <integer-array name="speed_max">
+        <item>1</item>
+        <item>64</item>
+        <item>4000</item>
+        <item>1000</item>
+        <item>2</item>
+    </integer-array>
+    <integer-array name="display_min">
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <integer-array name="display_max">
+        <item>255</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="system_pgn">
+        <item>0x8000</item>
+        <item>0x8001</item>
+        <item>0x8002</item>
+        <item>0x8003</item>
+        <item>0x8004</item>
+        <item>0x8005</item>
+        <item>0x8006</item>
+        <item>0x8007</item>
+        <item>0x8008</item>
+        <item>0x8009</item>
+        <item>0x800A</item>
+        <item>0x800B</item>
+        <item>0x800C</item>
+        <item>0x800D</item>
+    </integer-array>
+    <integer-array name="custom_pgn">
+        <item>0x8100</item>
+        <item>0x8101</item>
+        <item>0x8102</item>
+        <item>0x8103</item>
+        <item>0x8104</item>
+        <item>0x810F</item>
+        <item>0x8110</item>
+        <item>0x8111</item>
+        <item>0x8112</item>
+        <item>0x8113</item>
+        <item>0x8114</item>
+        <item>0x8115</item>
+        <item>0x8116</item>
+        <item>0x8117</item>
+        <item>0x8118</item>
+        <item>0x8119</item>
+        <item>0x811A</item>
+        <item>0x8120</item>
+        <item>0x8121</item>
+        <item>0x8122</item>
+        <item>0x8123</item>
+        <item>0x8124</item>
+        <item>0x8125</item>
+        <item>0x8126</item>
+        <item>0x8127</item>
+        <item>0x8128</item>
+        <item>0x8129</item>
+        <item>0x812A</item>
+        <item>0x8130</item>
+        <item>0x8131</item>
+        <item>0x8132</item>
+        <item>0x8133</item>
+        <item>0x8134</item>
+        <item>0x8140</item>
+        <item>0x8141</item>
+        <item>0x8142</item>
+    </integer-array>
+    <integer-array name="battery_pgn">
+        <item>0x8200</item>
+        <item>0x8201</item>
+        <item>0x8202</item>
+        <item>0x8203</item>
+        <item>0x8204</item>
+    </integer-array>
+    <integer-array name="motor_pgn">
+        <item>0x8300</item>
+        <item>0x8301</item>
+        <item>0x8302</item>
+        <item>0x8303</item>
+        <item>0x8304</item>
+        <item>0x8305</item>
+        <item>0x8306</item>
+        <item>0x8307</item>
+        <item>0x8308</item>
+        <item>0x8309</item>
+        <item>0x830A</item>
+        <item>0x830B</item>
+        <item>0x830C</item>
+        <item>0x830D</item>
+        <item>0x830E</item>
+        <item>0x830F</item>
+        <item>0x8310</item>
+        <item>0x8311</item>
+        <item>0x8312</item>
+    </integer-array>
+    <integer-array name="throttle_pgn">
+        <item>0x8500</item>
+        <item>0x8501</item>
+        <item>0x8502</item>
+        <item>0x8503</item>
+        <item>0x8504</item>
+        <item>0x8505</item>
+        <item>0x8506</item>
+        <item>0x8507</item>
+    </integer-array>
+    <integer-array name="sensor_pgn">
+        <item>0x8600</item>
+        <item>0x8601</item>
+        <item>0x8602</item>
+        <item>0x8603</item>
+        <item>0x8604</item>
+        <item>0x8605</item>
+        <item>0x8606</item>
+        <item>0x8610</item>
+        <item>0x8611</item>
+        <item>0x8612</item>
+        <item>0x8613</item>
+        <item>0x8614</item>
+        <item>0x8615</item>
+        <item>0x8616</item>
+        <item>0x8617</item>
+        <item>0x8618</item>
+    </integer-array>
+    <integer-array name="speed_pgn">
+        <item>0x8700</item>
+        <item>0x8701</item>
+        <item>0x8702</item>
+        <item>0x8703</item>
+        <item>0x8704</item>
+    </integer-array>
+    <integer-array name="display_pgn">
+        <item>0x8800</item>
+        <item>0x8801</item>
+    </integer-array>
+</resources>
