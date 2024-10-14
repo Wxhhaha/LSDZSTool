@@ -61,7 +61,7 @@ public class BleUtils {
     public static void connect(BluetoothClient client, Device device, BleConnectStatusListener connectListener, ConnectResult result) {
         client.registerConnectStatusListener(device.getMac(), connectListener);
         BleConnectOptions options =
-                new BleConnectOptions.Builder().setConnectRetry(3).setConnectTimeout(10000).setServiceDiscoverRetry(3).setServiceDiscoverTimeout(3000).build();
+                new BleConnectOptions.Builder().setConnectRetry(5).setConnectTimeout(10000).setServiceDiscoverRetry(3).setServiceDiscoverTimeout(3000).build();
 
         client.connect(device.getMac(), options, new BleConnectResponse() {
             @Override
@@ -108,8 +108,10 @@ public class BleUtils {
     }
 
     public static void unNotifyBle(BluetoothClient client, BleUnnotifyResponse unNotifyRsp) {
-        client.unnotify(ClientManager.getDevice().getMac(),
-                ClientManager.getservice().getUUID(), ClientManager.getNotifyCharacter().getUuid(), unNotifyRsp);
+        if(ClientManager.getDevice()!=null){
+            client.unnotify(ClientManager.getDevice().getMac(),
+                    ClientManager.getservice().getUUID(), ClientManager.getNotifyCharacter().getUuid(), unNotifyRsp);
+        }
     }
 
     public static void registerConnectStatus(BluetoothClient client, BleConnectStatusListener connectStatusListener) {
@@ -118,8 +120,10 @@ public class BleUtils {
     }
 
     public static void unRegisterConnectStatus(BluetoothClient client, BleConnectStatusListener connectStatusListener) {
-        client.unregisterConnectStatusListener(ClientManager.getDevice().getMac(),
-                connectStatusListener);
+        if(ClientManager.getDevice()!=null){
+            client.unregisterConnectStatusListener(ClientManager.getDevice().getMac(),
+                    connectStatusListener);
+        }
     }
 
     public static void readBle(BluetoothClient client, BleReadResponse readRsp) {
@@ -128,7 +132,7 @@ public class BleUtils {
     }
 
     public static void writeBle(BluetoothClient client, byte[] data, BleWriteResponse writeRsp) {
-        LogUtil.d("发送"+BleDataConvertUtil.byte2hex(data));
+        LogUtil.e("发送"+BleDataConvertUtil.byte2hex(data));
         client.writeNoRsp(ClientManager.getDevice().getMac(),
                 ClientManager.getservice().getUUID(), ClientManager.getWriteCharacter().getUuid(), data, writeRsp);
     }

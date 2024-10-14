@@ -14,7 +14,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- mymqttservice使用 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".App"
@@ -26,7 +31,19 @@
         android:theme="@style/Theme.LSDZSTool"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.update.ControllerUpdateActivity"
+            android:name=".ui.device.RemoteFunctionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".functiontest.CANTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".functiontest.UARTTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.device.QRscanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.update.ControllerUpdateActivity2"
             android:exported="false" />
         <activity
             android:name=".ui.update.UpdateActivity"
@@ -38,17 +55,6 @@
             android:name=".functiontest.FunctionTestActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.FristActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
             android:name=".ui.settings.SettingDetailActivity"
             android:exported="false" />
         <activity
@@ -58,42 +64,20 @@
             android:name=".ui.update.IOTUpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true">
+            android:name=".ui.device.DeviceListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".ui.device.DeviceListActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-
-<!--        <service android:name=".functiontest.MymqttService" />-->
-<!--        <service android:name="com.itfitness.mqttlibrary.MqttService" />-->
         <service android:name=".socket.JWebSocketClientService" />
+        <service android:name="com.itfitness.mqttlibrary.MqttService" />
+        <service android:name=".MymqttService" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

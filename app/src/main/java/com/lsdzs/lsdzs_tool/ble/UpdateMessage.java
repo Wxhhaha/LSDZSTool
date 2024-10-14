@@ -76,7 +76,7 @@ public class UpdateMessage {
         //数据长度-总校验和高低字节
         cmd[3] = 2;
         int cs = checkSum(data);
-        LogUtils.e("校验和"+cs);
+        LogUtils.e("校验和" + cs);
         //总校验和低字节
         cmd[4] = (byte) (cs & 0xff);
         //总校验和高字节
@@ -93,38 +93,42 @@ public class UpdateMessage {
         if (data.length < 4) {
             return new byte[0];
         }
-        if (data[0] == 0x2A && data[1] == 0x2D) {
-            int check = checkSum(ArrayUtils.subArray(data, 0, 4 + data[3]));
-            byte l = (byte) (check & 0xff);
-            byte h = (byte) ((check >> 8) & 0xff);
-            if (l == data[4 + data[3]] && h == data[5 + data[3]]) {
-                //校验通过
-                byte[] value = new byte[2];
-                switch (data[2]) {
-                    case 0x42:
-                        value[0] = 0x42;
-                        break;
-                    case 0x44:
-                        value[0] = 0x44;
-                        value[1] = data[6];
-                        if (data[6] == (byte) 0xA0) {
-                            //发送成功，index赋值，总校验和赋值
-                            index += DATA_MAX_LEN;
-                        }
-                        break;
-                    case 0x46:
-                        value[0] = 0x46;
-                        value[1] = data[4];
-                        break;
-                    case 0x48:
-                        value[0] = 0x48;
-                        value[1] = data[4];
-                        break;
+        try {
+            if (data[0] == 0x2A && data[1] == 0x2D) {
+                int check = checkSum(ArrayUtils.subArray(data, 0, 4 + data[3]));
+                byte l = (byte) (check & 0xff);
+                byte h = (byte) ((check >> 8) & 0xff);
+                if (l == data[4 + data[3] & 0xff] && h == data[5 + data[3] & 0xff]) {
+                    //校验通过
+                    byte[] value = new byte[2];
+                    switch (data[2]) {
+                        case 0x42:
+                            value[0] = 0x42;
+                            break;
+                        case 0x44:
+                            value[0] = 0x44;
+                            value[1] = data[6];
+                            if (data[6] == (byte) 0xA0) {
+                                //发送成功，index赋值，总校验和赋值
+                                index += DATA_MAX_LEN;
+                            }
+                            break;
+                        case 0x46:
+                            value[0] = 0x46;
+                            value[1] = data[4];
+                            break;
+                        case 0x48:
+                            value[0] = 0x48;
+                            value[1] = data[4];
+                            break;
+                    }
+                    return value;
+                } else {
+                    return new byte[0];
                 }
-                return value;
-            } else {
-                return new byte[0];
             }
+        } catch (Exception e) {
+            return new byte[0];
         }
         return new byte[0];
     }
@@ -132,7 +136,6 @@ public class UpdateMessage {
     public static byte[] resetMCU() {
         return BleDataConvertUtil.HexString2Bytes(RESET_MCU);
     }
-
 
     private static int checkSum(byte[] data) {
         int sum = 0;

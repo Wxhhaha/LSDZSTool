@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".functiontest.FunctionTestActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="60dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/bt_4g_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/unlock_by_4g"
+                android:textSize="@dimen/font_20" />
+
+            <Button
+                android:id="@+id/bt_ble_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:backgroundTint="@color/colorAccent"
+                android:padding="20dp"
+                android:text="@string/unlock"
+                android:textSize="@dimen/font_20" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/ride_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+<!--            <com.amap.api.maps.MapView-->
+<!--                android:id="@+id/amap"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_above="@id/bottom"></com.amap.api.maps.MapView>-->
+
+            <LinearLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/spacing_8"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_8">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/bt_4g_lock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/spacing_16"
+                        android:text="@string/lock_by_4g" />
+
+                    <Button
+                        android:id="@+id/bt_ble_lock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_24"
+                        android:backgroundTint="@color/colorAccent"
+                        android:text="@string/lock" />
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/gps" />
+
+                            <TextView
+                                android:id="@+id/tv_gps"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pas" />
+
+                            <TextView
+                                android:id="@+id/tv_pas"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/speed" />
+
+                            <TextView
+                                android:id="@+id/tv_speed"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/walk_status" />
+
+                            <TextView
+                                android:id="@+id/tv_walk_status"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/light_status" />
+
+                            <TextView
+                                android:id="@+id/tv_light_status"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/motor_status" />
+
+                            <TextView
+                                android:id="@+id/tv_motor_status"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/brake_status" />
+
+                            <TextView
+                                android:id="@+id/tv_brake_status"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/power" />
+
+                            <TextView
+                                android:id="@+id/tv_power"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/odo" />
+
+                            <TextView
+                                android:id="@+id/tv_odo"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/error_code" />
+
+                            <TextView
+                                android:id="@+id/tv_error_code"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/soc" />
+
+                            <TextView
+                                android:id="@+id/tv_soc_detail"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/voltage" />
+
+                            <TextView
+                                android:id="@+id/tv_battery_voltage"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/current" />
+
+                            <TextView
+                                android:id="@+id/tv_battery_current"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/controller_temp" />
+
+                            <TextView
+                                android:id="@+id/tv_controller_temp"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/motor_temp" />
+
+                            <TextView
+                                android:id="@+id/tv_motor_temp"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/battery_temp" />
+
+                            <TextView
+                                android:id="@+id/tv_battert_temp"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pedal" />
+
+                            <TextView
+                                android:id="@+id/tv_pedal"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/custom_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cadence" />
+
+                            <TextView
+                                android:id="@+id/tv_tapin"
+                                style="@style/custom_text_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_8"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/spacing_6"
+                            android:layout_marginBottom="@dimen/spacing_6"
+                            android:background="@color/lightGray" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="horizontal">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:orientation="vertical">-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tv_odo"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+
+                <!--                            android:text="0.0"-->
+                <!--                            android:textColor="@color/black"-->
+                <!--                            android:textSize="@dimen/font_24" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="odo"-->
+                <!--                            android:textSize="@dimen/font_16" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1.3"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tv_speed"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="0.0"-->
+                <!--                            android:textColor="@color/black"-->
+                <!--                            android:textSize="@dimen/font_24" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="速度（km/h）"-->
+                <!--                            android:textSize="@dimen/font_16" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:orientation="vertical">-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tv_soc"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+
+                <!--                            android:text="100%"-->
+                <!--                            android:textColor="@color/black"-->
+                <!--                            android:textSize="@dimen/font_24" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="soc"-->
+                <!--                            android:textSize="@dimen/font_16" />-->
+                <!--                    </LinearLayout>-->
+                <!--                </LinearLayout>-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="horizontal"></LinearLayout>-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="@dimen/spacing_8"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="horizontal">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/iv_walk"-->
+                <!--                        android:layout_width="40dp"-->
+                <!--                        android:layout_height="40dp"-->
+                <!--                        android:layout_marginRight="@dimen/spacing_24"-->
+                <!--                        android:src="@mipmap/ic_blue_man_off" />-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/iv_pas_sub"-->
+                <!--                        android:layout_width="30dp"-->
+                <!--                        android:visibility="invisible"-->
+                <!--                        android:layout_height="30dp"-->
+                <!--                        android:src="@mipmap/button_jian1" />-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginLeft="@dimen/spacing_16"-->
+                <!--                        android:layout_marginRight="@dimen/spacing_16"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tv_pas"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="5"-->
+                <!--                            android:textColor="@color/darkGrayDark"-->
+                <!--                            android:textSize="@dimen/font_40" />-->
+                <!--                    </LinearLayout>-->
+
+                <!--                    <ImageView-->
+                <!--                        android:visibility="invisible"-->
+                <!--                        android:id="@+id/iv_pas_add"-->
+                <!--                        android:layout_width="30dp"-->
+                <!--                        android:layout_height="30dp"-->
+                <!--                        android:src="@mipmap/button_jia1" />-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/iv_light"-->
+                <!--                        android:layout_width="40dp"-->
+                <!--                        android:layout_height="40dp"-->
+                <!--                        android:layout_marginLeft="@dimen/spacing_24"-->
+                <!--                        android:src="@mipmap/ic_blue_light_off"-->
+                <!--                        android:tag="0" />-->
+                <!--                </LinearLayout>-->
+
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="@dimen/spacing_8"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text="电压"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/tv_battery_voltage"-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text=""-->
+                <!--                                android:textColor="@color/black"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text="电流"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/tv_battery_current"-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text=""-->
+                <!--                                android:textColor="@color/black"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text="踏频"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/tv_tapin"-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text=""-->
+                <!--                                android:textColor="@color/black"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+                <!--                        </LinearLayout>-->
+
+                <!--                        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_width="0dp"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_weight="1"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:gravity="center"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:orientation="vertical">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text="力矩"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:id="@+id/tv_liju"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text=""&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textColor="@color/black"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+                <!--                    </LinearLayout>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="@dimen/spacing_8"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text="控制器(℃)"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/tv_controller_temp"-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text=""-->
+                <!--                                android:textColor="@color/black"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text="电机(℃)"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/tv_motor_temp"-->
+                <!--                                android:layout_width="wrap_content"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:text=""-->
+                <!--                                android:textColor="@color/black"-->
+                <!--                                android:textSize="@dimen/font_14" />-->
+                <!--                        </LinearLayout>-->
+
+                <!--                        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_width="0dp"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_weight="1"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:gravity="center"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:orientation="vertical">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text="电池(℃)"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:id="@+id/tv_battery_temp"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text=""&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textColor="@color/black"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_width="0dp"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_weight="1"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:gravity="center"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:orientation="vertical">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text="电机"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:id="@+id/tv_motor_status"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text=""&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textColor="@color/black"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_width="0dp"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:layout_weight="1"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:gravity="center"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            android:orientation="vertical">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text="刹车"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:id="@+id/tv_brake"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:text=""&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textColor="@color/black"&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                android:textSize="@dimen/font_14" />&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+                <!--                    </LinearLayout>-->
+            </LinearLayout>
+            <!--            </LinearLayout>-->
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

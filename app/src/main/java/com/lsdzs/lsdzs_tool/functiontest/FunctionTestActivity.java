@@ -161,11 +161,11 @@ public class FunctionTestActivity extends BaseActivity<RideViewModel, ActivityFu
             }, 2000);
         });
 
-        dataBinding.ivWalk.setOnTouchListener(new WalkTouchEvent());
-
-        dataBinding.ivLight.setOnClickListener(view -> {
-            setLight = true;
-        });
+//        dataBinding.ivWalk.setOnTouchListener(new WalkTouchEvent());
+//
+//        dataBinding.ivLight.setOnClickListener(view -> {
+//            setLight = true;
+//        });
 
         dataBinding.ivPasAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -583,7 +583,7 @@ public class FunctionTestActivity extends BaseActivity<RideViewModel, ActivityFu
                                     writeMessage(LDBLCmd.readBikeData());
                                 }
                             }
-                        },100);
+                        }, 100);
                     } else {
                         if (setPowerOff) {//关机操作
                             writeMessage(LDBLCmd.bikePowerOff());

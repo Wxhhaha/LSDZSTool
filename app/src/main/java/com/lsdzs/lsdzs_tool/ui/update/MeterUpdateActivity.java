@@ -144,6 +144,7 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
                     isSuccess = false;
                     dataBinding.btStart.setEnabled(false);
                     dataBinding.message.setText("");
+                    dataBinding.cm.setBase(SystemClock.elapsedRealtime());
                     startUpdate();
                     lastSendTime = System.currentTimeMillis();
                     handler.post(runnable);
@@ -162,6 +163,7 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
      * 开始连接，先连发三条连接命令，等待回复
      */
     private void startTalk() {
+        dataBinding.cm.start();
         dataBinding.message.setText("连接中");
         connectTimes = 0;
         connectID = 0;
@@ -320,12 +322,10 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
                                 data1[2] = 0;
                                 data1[3] = 0;
                                 data1[4] = (byte) (len & 0xff);
-                                data1[5] = (byte) (len >> 8);
-                                data1[6] = 0;
-                                data1[7] = 0;
-                                for (int m = 0; m < 48; m++) {
-                                    data1[8 + m] = resDataArray[m];
-                                }
+                                data1[5] = (byte) ((len >> 8) & 0xff);
+                                data1[6] = (byte) ((len >> 16) & 0xff);
+                                data1[7] = (byte) (len >> 24);
+                                System.arraycopy(resDataArray, 0, data1, 8, 48);
                                 index = 48;
                                 lastSendData = sendOutData(sa6, ID, data1);
                                 lastFileData = lastSendData;
@@ -338,6 +338,7 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
                                 // 升级完成
                                 isSuccess = true;
                                 dataBinding.message.setText("成功！！！！！");
+                                dataBinding.cm.stop();
                                 Toast.makeText(MeterUpdateActivity.this, "升级成功！！！", Toast.LENGTH_SHORT).show();
                             } else {
                                 //第N条,N>1
@@ -399,17 +400,20 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
                     }
                 } else if (cmd_flag == CMD_UPDATE_APROM) {
                     if (index == 48) {
+                        dataBinding.cm.stop();
                         dataBinding.message.setText("升级失败，10S后重试");
                         //停止升级
                         sendStopMessage();
                         dataBinding.btStart.setEnabled(true);
                     } else {
+                        dataBinding.cm.stop();
                         LogUtil.e("写入失败,重发" + index);
                         dataBinding.message.setText("写入失败,重发" + index + "\n");
                         sendRepeatMessage();
                         cmd_flag = CMD_REQUEST_REPEAT;
                     }
                 } else {
+                    dataBinding.cm.stop();
                     dataBinding.message.setText("升级失败，10S后重试");
                     //停止升级
                     sendStopMessage();
@@ -455,34 +459,34 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
         lastSendTime = System.currentTimeMillis();
         LogUtil.e(CustomUtil.byte2hex(data));
         if (ClientManager.getDevice() != null) {
-            if (data.length > BLE_MAX_DATA_LENGTH) {
-//                    ClientManager.getClient().requestMtu(ClientManager.getmDevice().getAddress(), 67, new BleMtuResponse() {
-//                        @Override
-//                        public void onResponse(int i, Integer integer) {
-//                            Toast.makeText(getApplicationContext(),i+"--"+integer.intValue(),Toast.LENGTH_LONG).show();
-//                            BluetoothUtil.writeSingle(data);
+//            if (data.length > BLE_MAX_DATA_LENGTH) {
+////                    ClientManager.getClient().requestMtu(ClientManager.getmDevice().getAddress(), 67, new BleMtuResponse() {
+////                        @Override
+////                        public void onResponse(int i, Integer integer) {
+////                            Toast.makeText(getApplicationContext(),i+"--"+integer.intValue(),Toast.LENGTH_LONG).show();
+////                            BluetoothUtil.writeSingle(data);
+////                        }
+////                    });
+//
+//                for (int i = 0; i < data.length; i += BLE_MAX_DATA_LENGTH) {
+//                    if (i + BLE_MAX_DATA_LENGTH < data.length) {
+//                        writeSingle(subBytes(data, i, BLE_MAX_DATA_LENGTH));
+//                        try {
+//                            if (cmd_flag == CMD_UPDATE_APROM) {
+//                                Thread.sleep(1);
+//                            } else {
+//                                Thread.sleep(10);
+//                            }
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
 //                        }
-//                    });
-
-                for (int i = 0; i < data.length; i += BLE_MAX_DATA_LENGTH) {
-                    if (i + BLE_MAX_DATA_LENGTH < data.length) {
-                        writeSingle(subBytes(data, i, BLE_MAX_DATA_LENGTH));
-                        try {
-                            if (cmd_flag == CMD_UPDATE_APROM) {
-                                Thread.sleep(1);
-                            } else {
-                                Thread.sleep(30);
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        writeSingle(subBytes(data, i, data.length - i));
-                    }
-                }
-            } else {
+//                    } else {
+//                        writeSingle(subBytes(data, i, data.length - i));
+//                    }
+//                }
+//            } else {
                 writeSingle(data);
-            }
+//            }
         }
     }
 
@@ -539,7 +543,7 @@ public class MeterUpdateActivity extends BaseNoModelActivity<ActivityMeterUpdate
             }
         });
         BleUtils.unRegisterConnectStatus(bluetoothClient, mConnectStatusListener);
-        BleUtils.disConnect(bluetoothClient);
+//        BleUtils.disConnect(bluetoothClient);
         super.onDestroy();
     }
 }

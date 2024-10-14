@@ -1,7 +1,9 @@
 package com.lsdzs.lsdzs_tool;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.MediaStore;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -73,5 +75,20 @@ public class FileUtil {
 
         }
         return content;
+    }
+
+    public static String getFileNameFromUri(Context context,Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DISPLAY_NAME };
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME);
+            cursor.moveToFirst();
+            return cursor.getString(columnIndex);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 }

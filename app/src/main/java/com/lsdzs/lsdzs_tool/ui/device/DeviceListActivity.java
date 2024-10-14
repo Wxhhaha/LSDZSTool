@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.inuker.bluetooth.library.BluetoothClient;
@@ -23,15 +22,15 @@ import com.inuker.bluetooth.library.connect.response.BleMtuResponse;
 import com.inuker.bluetooth.library.search.SearchRequest;
 import com.inuker.bluetooth.library.search.SearchResult;
 import com.inuker.bluetooth.library.search.response.SearchResponse;
-import com.lsdzs.lsdzs_tool.UserUtil;
-import com.lsdzs.lsdzs_tool.functiontest.FunctionTestActivity;
-import com.lsdzs.lsdzs_tool.ui.update.IOTUpdateActivity;
+import com.lsdzs.lsdzs_tool.MymqttService;
 import com.lsdzs.lsdzs_tool.R;
 import com.lsdzs.lsdzs_tool.ble.BleUtils;
 import com.lsdzs.lsdzs_tool.ble.ClientManager;
 import com.lsdzs.lsdzs_tool.ble.Device;
 import com.lsdzs.lsdzs_tool.databinding.ActivityDeviceListBinding;
-import com.lsdzs.lsdzs_tool.ui.login.LoginActivity;
+import com.lsdzs.lsdzs_tool.functiontest.CANTestActivity;
+import com.lsdzs.lsdzs_tool.functiontest.FunctionTestActivity;
+import com.lsdzs.lsdzs_tool.functiontest.UARTTestActivity;
 import com.lsdzs.lsdzs_tool.ui.login.LoginViewModel;
 import com.lsdzs.lsdzs_tool.ui.update.UpdateActivity;
 import com.permissionx.guolindev.PermissionX;
@@ -41,8 +40,6 @@ import com.wxh.basiclib.view.XRecyclerView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDeviceListBinding> {
     private DeviceAdapter usefulAdapter;
@@ -62,7 +59,7 @@ public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDev
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.refresh:
-                        searchBluetooth();
+                        ActivityUtils.startActivity(QRscanActivity.class);
                         return true;
                 }
                 return false;
@@ -85,21 +82,7 @@ public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDev
 
     @Override
     protected void initData() {
-        if (!UserUtil.isLogin) {
-            String token = SPUtils.getInstance().getString("token");
-            if (StringUtils.isEmpty(token)) {
-                ActivityUtils.startActivity(LoginActivity.class);
-                finish();
-            } else {
-                try {
-                    viewModel.tokenLogin(token);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-
+        MymqttService.startService(getApplicationContext());
         bluetoothClient = ClientManager.getClient(getApplicationContext());
         usefulAdapter = new DeviceAdapter(this);
         usefulAdapter.setOnItemClickeListener(device -> {
@@ -113,7 +96,7 @@ public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDev
     private void requestPermissions() {
         String[] permissions;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            permissions = new String[]{Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            permissions = new String[]{Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         } else {
             permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         }
@@ -173,31 +156,14 @@ public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDev
 
         @Override
         public void onSearchStopped() {
-
+            dataBinding.lvDevice.refreshComplete();
         }
 
         @Override
         public void onSearchCanceled() {
-
+            dataBinding.lvDevice.refreshComplete();
         }
     };
-
-    private Timer timer;
-    private TimerTask timerTask;
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        timer = new Timer();
-//        timerTask = new TimerTask() {
-//            @Override
-//            public void run() {
-//        searchBluetooth();
-//            }
-//        };
-//
-//        timer.schedule(timerTask, 0, 5000);
-    }
 
     public void showProgress() {
         showDialog("Loading");
@@ -233,19 +199,25 @@ public class DeviceListActivity extends BaseActivity<LoginViewModel, ActivityDev
             public void success() {
                 stopProgress();
                 //todo 跳转到测试页
-                bluetoothClient.requestMtu(ClientManager.getDevice().getMac(), 200, new BleMtuResponse() {
+                bluetoothClient.requestMtu(device.getMac(), 200, new BleMtuResponse() {
                     @Override
                     public void onResponse(int i, Integer integer) {
-                        String[] items = {"性能测试", "固件升级"};
+                        String[] items = {"CANBUS", "UART", "leadeer", "update"};
                         AlertDialog.Builder builder = new AlertDialog.Builder(DeviceListActivity.this);
                         builder.setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int p) {
                                 switch (p) {
                                     case 0:
-                                        ActivityUtils.startActivity(FunctionTestActivity.class);
+                                        ActivityUtils.startActivity(CANTestActivity.class);
                                         break;
                                     case 1:
+                                        ActivityUtils.startActivity(UARTTestActivity.class);
+                                        break;
+                                    case 2:
+                                        ActivityUtils.startActivity(FunctionTestActivity.class);
+                                        break;
+                                    case 3:
                                         ActivityUtils.startActivity(UpdateActivity.class);
                                         break;
 

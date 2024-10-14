@@ -104,7 +104,7 @@ public class ControllerDataUtils {
         dataA[2] = (value[3] >> 5) & 0x01;//大灯
         dataA[3] = (value[3] >> 6) & 0x01;//刹车状态
         dataA[4] = (value[3] >> 7) & 0x01;//电机运转
-
+//3A2808   05 00  15   000000000086FD0D0A
         int speedH, speedL;
         speedH = value[4] & 0x0f;
         speedL = value[5] & 0xff;
@@ -144,7 +144,7 @@ public class ControllerDataUtils {
         dataB[6] = value[13] & 0xff;//电池剩余容量*10
         dataB[7] = value[14] & 0xff;//SOC
         dataB[8] = value[15] & 0xff;//实时功率百分比
-        return dataB;
+        return dataB;//3A290D  000000  3A2808050015000000000086FD0D0A
     }
 
     /**

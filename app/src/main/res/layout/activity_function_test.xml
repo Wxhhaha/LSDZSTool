@@ -8,17 +8,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/ll_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="60dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/bt_4g_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="4G开锁"
+                android:textSize="@dimen/font_20" />
+
+            <Button
+                android:id="@+id/bt_ble_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:backgroundTint="@color/colorAccent"
+                android:padding="20dp"
+                android:text="蓝牙开锁"
+                android:textSize="@dimen/font_20" />
+        </LinearLayout>
+
         <RelativeLayout
             android:id="@+id/ride_layout"
-            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
             <com.amap.api.maps.MapView
                 android:id="@+id/amap"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/bottom" />
+                android:layout_above="@id/bottom"></com.amap.api.maps.MapView>
 
             <LinearLayout
                 android:id="@+id/bottom"
@@ -86,7 +113,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.3"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -144,15 +171,15 @@
 
                     <ImageView
                         android:id="@+id/iv_walk"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/spacing_16"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="@dimen/spacing_24"
                         android:src="@mipmap/ic_blue_man_off" />
 
                     <ImageView
                         android:id="@+id/iv_pas_sub"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@mipmap/button_jian1" />
 
                     <LinearLayout
@@ -174,15 +201,15 @@
 
                     <ImageView
                         android:id="@+id/iv_pas_add"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@mipmap/button_jia1" />
 
                     <ImageView
                         android:id="@+id/iv_light"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_16"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="@dimen/spacing_24"
                         android:src="@mipmap/ic_blue_light_off"
                         android:tag="0" />
                 </LinearLayout>
@@ -265,27 +292,27 @@
                                 android:textSize="@dimen/font_14" />
                         </LinearLayout>
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:gravity="center"-->
-<!--                            android:orientation="vertical">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:orientation="vertical">-->
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="力矩"-->
-<!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text="力矩"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_liju"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text=""-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="@dimen/font_14" />-->
-<!--                        </LinearLayout>-->
+                        <!--                            <TextView-->
+                        <!--                                android:id="@+id/tv_liju"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text=""-->
+                        <!--                                android:textColor="@color/black"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                        </LinearLayout>-->
                     </LinearLayout>
 
                     <LinearLayout
@@ -338,102 +365,76 @@
                                 android:textSize="@dimen/font_14" />
                         </LinearLayout>
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:gravity="center"-->
-<!--                            android:orientation="vertical">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:orientation="vertical">-->
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="电池(℃)"-->
-<!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text="电池(℃)"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_battery_temp"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text=""-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="@dimen/font_14" />-->
-<!--                        </LinearLayout>-->
+                        <!--                            <TextView-->
+                        <!--                                android:id="@+id/tv_battery_temp"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text=""-->
+                        <!--                                android:textColor="@color/black"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:gravity="center"-->
-<!--                            android:orientation="vertical">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:orientation="vertical">-->
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="电机"-->
-<!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text="电机"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_motor_status"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text=""-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="@dimen/font_14" />-->
-<!--                        </LinearLayout>-->
+                        <!--                            <TextView-->
+                        <!--                                android:id="@+id/tv_motor_status"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text=""-->
+                        <!--                                android:textColor="@color/black"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:gravity="center"-->
-<!--                            android:orientation="vertical">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:orientation="vertical">-->
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="刹车"-->
-<!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text="刹车"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_brake"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text=""-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="@dimen/font_14" />-->
-<!--                        </LinearLayout>-->
+                        <!--                            <TextView-->
+                        <!--                                android:id="@+id/tv_brake"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:text=""-->
+                        <!--                                android:textColor="@color/black"-->
+                        <!--                                android:textSize="@dimen/font_14" />-->
+                        <!--                        </LinearLayout>-->
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_unlock"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="60dp"
-            android:visibility="visible">
-
-            <Button
-                android:id="@+id/bt_4g_unlock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="4G开锁"
-                android:textSize="@dimen/font_20" />
-
-            <Button
-                android:id="@+id/bt_ble_unlock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_16"
-                android:backgroundTint="@color/colorAccent"
-                android:padding="20dp"
-                android:text="蓝牙开锁"
-                android:textSize="@dimen/font_20" />
-        </LinearLayout>
     </RelativeLayout>
 
 </layout>

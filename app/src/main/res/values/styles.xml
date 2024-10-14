@@ -10,4 +10,11 @@
         <item name="android:windowEnterAnimation">@anim/tranlate_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/tranlate_dialog_out</item>
     </style>
+    <style name="custom_text_value" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+    <style name="custom_text" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
 </resources>

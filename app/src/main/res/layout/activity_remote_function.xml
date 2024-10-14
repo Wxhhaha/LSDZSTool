@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.device.RemoteFunctionActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_unlock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="60dp">
+
+        <TextView
+            android:id="@+id/tv_gps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/spacing_16"
+            android:text="GPS"
+            android:textSize="@dimen/font_20" />
+
+        <Button
+            android:id="@+id/bt_4g_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/unlock_by_4g"
+            android:textSize="@dimen/font_16" />
+
+        <Button
+            android:id="@+id/bt_4g_lock"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_16"
+            android:padding="20dp"
+            android:text="@string/lock_by_4g"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+</layout>
